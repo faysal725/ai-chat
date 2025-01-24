@@ -11,9 +11,6 @@ export default function Sidebar() {
         <Button variant="ghost">Settings</Button>
       </nav>
 
-      <Button variant="ghost" className="mt-auto">
-        Logout
-      </Button>
     </aside>
   );
 }
