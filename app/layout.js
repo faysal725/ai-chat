@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConversationContextProvider from "@/context/ConversationContext";
-import Sidebar from "@/components/ui/sidebar";
+import Sidebar from "../components/ui/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

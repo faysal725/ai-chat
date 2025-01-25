@@ -1,13 +1,18 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { ConversationContext } from "@/context/ConversationContext";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
 export default function InputBox() {
+  const { conversations, activeConversation, createNewConversation, insertConversation } =
+    useContext(ConversationContext);
   const queryTextRef = useRef(null);
   // console.log(process.env.NEXT_PUBLIC_API_URL);
   // console.log(process.env.NEXT_PUBLIC_OPENAI_MOCK_API);
   // console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
+
+  console.log(activeConversation, conversations)
 
   async function submit(event) {
     event.preventDefault();
@@ -15,7 +20,20 @@ export default function InputBox() {
     let userText = queryTextRef.current.value
     const response = await sendingQuery(userText);
 
-    
+    let chatObj = {}
+    if (!activeConversation) {
+      let newChatObj = {
+        conversation: []
+      }
+      chatObj["conversation"] = [{user: userText, system:response}]
+
+      createNewConversation(chatObj)
+    }else{
+      // loadConversation(chatObj, true)
+      chatObj["user"] = userText
+      chatObj["system"] = response
+      insertConversation(chatObj)
+    }
     console.log(response);
   }
 
@@ -44,6 +62,9 @@ export default function InputBox() {
       return error
     }
   }
+
+
+  
 
   return (
     <form
