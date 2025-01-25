@@ -12,8 +12,11 @@ export default function InputBox() {
   async function submit(event) {
     event.preventDefault();
 
-    console.log(process.env["OPENAI_API_KEY"]);
-    await sendingQuery(queryTextRef.current.value);
+    let userText = queryTextRef.current.value
+    const response = await sendingQuery(userText);
+
+    
+    console.log(response);
   }
 
   async function sendingQuery(query) {
@@ -35,9 +38,10 @@ export default function InputBox() {
         options
       );
       const data = await response.json();
-      console.log(data.choices[0].message.content);
+
+      return data.choices[0].message.content
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
