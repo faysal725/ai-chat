@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ConversationContext } from "../../context/ConversationContext";
 import { Button } from "./button";
 import { BeakerIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
@@ -21,6 +21,12 @@ export default function Sidebar() {
     console.log(conversations, activeConversation)
     clearConversation()
   }
+
+  useEffect(() => {
+    console.log(activeConversation);
+    console.log(conversations);
+  }, [activeConversation]);
+  
   return (
     <aside className="w-64 bg-gray-800 text-white flex flex-col pb-10">
       <div className="flex justify-between items-center p-4 ">
@@ -29,10 +35,12 @@ export default function Sidebar() {
         <PencilSquareIcon className="size-6 text-white" />
       </Button>
       </div>
-      <nav className="flex flex-col gap-2 p-4 ">
-        <Button variant="ghost">Dashboard</Button>
-        <Button variant="ghost">Profile</Button>
-        <Button variant="ghost">Settings</Button>
+      <nav className="flex flex-col gap-2 p-4 max-h-[80vh] overflow-y-scroll">
+        {
+          conversations.length > 0 ?conversations.map((conversation) => (
+            <Button key={conversation.id} variant="ghost" onClick={() => loadConversation(conversation.id)}>{conversation.title}</Button>
+          )) : <p className="text-xs">No Previous Chat Found</p>
+        }
       </nav>
     </aside>
   );

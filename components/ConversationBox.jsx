@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useEffect } from "react";
 import { ConversationContext } from "@/context/ConversationContext";
-import { UserCircleIcon, CubeIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, CubeTransparentIcon } from '@heroicons/react/24/solid'
 
 export default function ConversationBox() {
   const { conversations, activeConversation, loadConversation } =
@@ -9,10 +9,7 @@ export default function ConversationBox() {
 
   // console.log(activeConversation);
 
-  useEffect(() => {
-    console.log(activeConversation);
-    console.log(conversations);
-  }, [activeConversation]);
+
 
   if (activeConversation == null) {
     return (
@@ -23,8 +20,8 @@ export default function ConversationBox() {
   }
   return (
     <section className=" mx-auto space-y-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] h-[85vh] overflow-y-scroll">
-      {activeConversation["conversation"].map((chat) => (
-        <section className=" space-y-10">
+      {activeConversation["conversation"].map((chat, index) => (
+        <section key={index} className=" space-y-10">
           <div className="flex flex-col ">
             <UserCircleIcon className="h-10 w-10 text-slate-800 ml-auto" />
             <p className="text-end">{chat.user}</p>
@@ -32,7 +29,7 @@ export default function ConversationBox() {
 
           <div className="flex flex-col justify-start">
             
-          <CubeIcon className="h-10 w-10 text-slate-800 mr-auto" />
+          <CubeTransparentIcon className="h-10 w-10 text-slate-800 mr-auto" />
           <p>{chat.system}</p>
           </div>
         </section>

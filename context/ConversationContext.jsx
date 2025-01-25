@@ -12,14 +12,16 @@ export default function ConversationContextProvider(props) {
   const [allConversation, setAllConversation] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
 
-  function loadConversationHandler(id, conversationObj, newChat = false) {
+  function loadConversationHandler(id) {
     // setActiveConversation()
-
-    if (newChat) {
-      // createNewConversation(conversationObj);
-    } else {
-      // insertConversation(id, conversationObj)
-    }
+    // console.log(id)
+    allConversation.map((chat) => {
+      if (chat.id == id) {
+        setActiveConversation(chat)
+        console.log(chat)
+        console.log(chat)
+      }
+    })
   }
   //   {
   //     "conversation": [

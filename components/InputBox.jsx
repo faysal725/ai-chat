@@ -12,7 +12,7 @@ export default function InputBox() {
   // console.log(process.env.NEXT_PUBLIC_OPENAI_MOCK_API);
   // console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
 
-  console.log(activeConversation, conversations)
+  // console.log(activeConversation, conversations)
 
   async function submit(event) {
     event.preventDefault();
@@ -26,6 +26,7 @@ export default function InputBox() {
         conversation: []
       }
       chatObj["conversation"] = [{user: userText, system:response}]
+      chatObj["title"] = response
 
       createNewConversation(chatObj)
     }else{
@@ -34,7 +35,7 @@ export default function InputBox() {
       chatObj["system"] = response
       insertConversation(chatObj)
     }
-    console.log(response);
+    // console.log(response);
   }
 
   async function sendingQuery(query) {
