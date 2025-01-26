@@ -30,7 +30,7 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-gray-800 text-white flex flex-col pb-10">
       <div className="flex justify-between items-center p-4 ">
-        <p className="text-lg font-bold">History</p>
+        <p className="text-lg font-bold">Chat History</p>
         <Button variant="default" size="sm" className="" onClick={() => clear()}>
         <PencilSquareIcon className="size-6 text-white" />
       </Button>

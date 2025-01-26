@@ -74,7 +74,7 @@ export default function InputBox() {
       className="mx-auto flex flex-1 items-center  text-base md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] py-2 bg-white"
     >
       <Input type="text" placeholder="Write Something" ref={queryTextRef} />
-      <Button variant="default" size="sm" className="" type="submit">
+      <Button variant="default" size="sm" className="h-9" type="submit">
         Send
       </Button>
     </form>

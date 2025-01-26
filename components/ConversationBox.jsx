@@ -28,14 +28,18 @@ export default function ConversationBox() {
     >
       {activeConversation["conversation"].map((chat, index) => (
         <section key={index} className=" space-y-10">
-          <div className="flex flex-col ">
-            <UserCircleIcon className="h-10 w-10 text-slate-800 ml-auto" />
-            <p className="text-end">{chat.user}</p>
+          <div className="flex justify-end">
+            <div className="flex flex-col max-w-56 ">
+              <UserCircleIcon className="h-10 w-10 text-slate-800 ml-auto" />
+              <p className="text-end break-words">{chat.user}</p>
+            </div>
           </div>
 
-          <div className="flex flex-col justify-start">
-            <CubeTransparentIcon className="h-10 w-10 text-slate-800 mr-auto" />
-            <p>{chat.system}</p>
+          <div className="flex justify-start">
+            <div className="flex flex-col justify-start max-w-56 ">
+              <CubeTransparentIcon className="h-10 w-10 text-slate-800 mr-auto" />
+              <p className="break-words">{chat.system}</p>
+            </div>
           </div>
         </section>
       ))}
