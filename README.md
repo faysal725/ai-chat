@@ -1,3 +1,4 @@
+# Live Link: https://ai-chat-puce-alpha.vercel.app/
 # AI Chat Application
 An AI-powered chat application built with Next.js, Shadcn, and OpenAI API, featuring a conversational interface where users can interact with an AI system.
 
