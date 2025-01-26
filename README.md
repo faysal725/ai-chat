@@ -1,7 +1,7 @@
-## AI Chat Application
+# AI Chat Application
 An AI-powered chat application built with Next.js, Shadcn, and OpenAI API, featuring a conversational interface where users can interact with an AI system.
 
-## Features
+# Features
 
 Message Input: Users can type messages and send them to interact with the AI.
 Chat Display: Displays user and AI messages in a conversational style with different layouts.
@@ -10,27 +10,27 @@ Chat Display: Displays user and AI messages in a conversational style with diffe
 
 ## How to Run the Project Locally
 
-# Prerequisites
+##  Prerequisites
 Node.js: Install Node.js (version 18 or higher recommended).
 Git: Ensure you have Git installed on your system.
 OpenAI API Key: Obtain an API key from OpenAI.
 Steps to Run
 
 
-# Clone the Repository
+##  Clone the Repository
 git clone https://github.com/faysal725/ai-chat.git
 cd ai-chat
 
-# Install Dependencies
+##  Install Dependencies
 npm install
 
-# Set Environment Variables
+## Set Environment Variables
 Create a .env.local file in the project root.
 Add your OpenAI API key:
 makefile
 OPENAI_API_KEY=your_openai_api_key
 
-# Run the Development Server
+##  Run the Development Server
 npm run dev
 
 # Access the Application
