@@ -35,7 +35,7 @@ export default function Sidebar() {
         <PencilSquareIcon className="size-6 text-white" />
       </Button>
       </div>
-      <nav className="flex flex-col gap-2 p-4 max-h-[80vh] overflow-y-scroll scrollbar-style">
+      <nav className="flex flex-col gap-2 p-4 max-h-[80vh] overflow-y-scroll scrollbar-hide">
         {
           conversations.length > 0 ?conversations.map((conversation) => (
             <Button key={conversation.id} variant="ghost" onClick={() => loadConversation(conversation.id)}>{conversation.title}</Button>

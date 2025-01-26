@@ -1,42 +1,51 @@
 "use client";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ConversationContext } from "@/context/ConversationContext";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import Loader from "./Loader";
 
 export default function InputBox() {
-  const { conversations, activeConversation, createNewConversation, insertConversation } =
-    useContext(ConversationContext);
+  const {
+    conversations,
+    activeConversation,
+    createNewConversation,
+    insertConversation,
+  } = useContext(ConversationContext);
   const queryTextRef = useRef(null);
+  const [isRequesting, setIsRequesting] = useState(false);
 
   async function submit(event) {
     event.preventDefault();
-
-    let userText = queryTextRef.current.value
+    setIsRequesting(true);
+    let userText = queryTextRef.current.value;
 
     if (userText == "") {
-      return 
+      setIsRequesting(false);
+      return;
     }
-    
+
     const response = await sendingQuery(userText);
 
-    let chatObj = {}
+    let chatObj = {};
     if (!activeConversation) {
       let newChatObj = {
-        conversation: []
-      }
-      chatObj["conversation"] = [{user: userText, system:response}]
-      chatObj["title"] = response
+        conversation: [],
+      };
+      chatObj["conversation"] = [{ user: userText, system: response }];
+      chatObj["title"] = response;
 
-      createNewConversation(chatObj)
-    }else{
+      createNewConversation(chatObj);
+    } else {
       // loadConversation(chatObj, true)
-      chatObj["user"] = userText
-      chatObj["system"] = response
-      insertConversation(chatObj)
+      chatObj["user"] = userText;
+      chatObj["system"] = response;
+      insertConversation(chatObj);
     }
 
-    queryTextRef.current.value = ""
+    queryTextRef.current.value = "";
+
+    setIsRequesting(false);
   }
 
   async function sendingQuery(query) {
@@ -59,14 +68,11 @@ export default function InputBox() {
       );
       const data = await response.json();
 
-      return data.choices[0].message.content
+      return data.choices[0].message.content;
     } catch (error) {
-      return error
+      return error;
     }
   }
-
-
-  
 
   return (
     <form
@@ -74,9 +80,14 @@ export default function InputBox() {
       className="mx-auto flex flex-1 items-center  text-base md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] py-2 bg-white"
     >
       <Input type="text" placeholder="Write Something" ref={queryTextRef} />
-      <Button variant="default" size="sm" className="h-9" type="submit">
-        Send
-      </Button>
+
+      {isRequesting ? (
+        <Loader />
+      ) : (
+        <Button variant="default" size="sm" className="h-9" type="submit">
+          Send
+        </Button>
+      )}
     </form>
   );
 }

@@ -10,8 +10,12 @@ export default function ConversationBox() {
   // console.log(activeConversation);
 
   useEffect(() => {
-    var objDiv = document.getElementById("msgBox");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    if (document.getElementById("msgBox")) {
+      var msgBoxContainer = document.getElementById("msgBox");
+      console.log(msgBoxContainer)
+      msgBoxContainer.scrollTop = msgBoxContainer.scrollHeight;
+    }
+
   }, [activeConversation]);
 
   if (activeConversation == null) {
