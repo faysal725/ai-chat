@@ -8,16 +8,16 @@ export default function InputBox() {
   const { conversations, activeConversation, createNewConversation, insertConversation } =
     useContext(ConversationContext);
   const queryTextRef = useRef(null);
-  // console.log(process.env.NEXT_PUBLIC_API_URL);
-  // console.log(process.env.NEXT_PUBLIC_OPENAI_MOCK_API);
-  // console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
-
-  // console.log(activeConversation, conversations)
 
   async function submit(event) {
     event.preventDefault();
 
     let userText = queryTextRef.current.value
+
+    if (userText == "") {
+      return 
+    }
+    
     const response = await sendingQuery(userText);
 
     let chatObj = {}
@@ -35,7 +35,8 @@ export default function InputBox() {
       chatObj["system"] = response
       insertConversation(chatObj)
     }
-    // console.log(response);
+
+    queryTextRef.current.value = ""
   }
 
   async function sendingQuery(query) {

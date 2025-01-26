@@ -67,12 +67,32 @@ export default function ConversationContextProvider(props) {
   }
 
 
-  // useEffect(() => {
+  function persistData(data) {
     
-  
+  }
 
 
-  // }, [activeConversation])
+  // retrive initial data from localStorage
+  useEffect(() => {
+    const storedConversations = localStorage.getItem("conversations");
+    const storedActiveConversation = localStorage.getItem("activeConversation");
+
+    if (storedConversations) {
+      setAllConversation(JSON.parse(storedConversations));
+    }
+    if (storedActiveConversation) {
+      setActiveConversation(JSON.parse(storedActiveConversation));
+    }
+  }, []);
+
+  // Persist data to localStorage 
+  useEffect(() => {
+    localStorage.setItem("conversations", JSON.stringify(allConversation));
+  }, [allConversation]);
+
+  useEffect(() => {
+    localStorage.setItem("activeConversation", JSON.stringify(activeConversation));
+  }, [activeConversation]);
   
 
   const context = {

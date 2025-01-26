@@ -19,7 +19,7 @@ export default function ConversationBox() {
     );
   }
   return (
-    <section className=" mx-auto space-y-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] h-[85vh] overflow-y-scroll">
+    <section className=" mx-auto space-y-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] h-[85vh] overflow-y-scroll  scrollbar-style pr-5">
       {activeConversation["conversation"].map((chat, index) => (
         <section key={index} className=" space-y-10">
           <div className="flex flex-col ">
