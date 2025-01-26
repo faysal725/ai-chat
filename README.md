@@ -8,7 +8,7 @@ Message Input: Users can type messages and send them to interact with the AI.
 
 Chat Display: Displays user and AI messages in a conversational style with different layouts.
 
-## AI Responses: Integrated with OpenAI API to simulate realistic AI conversations.
+## AI Responses: Integrated with OpenAI Mock API to simulate realistic AI conversations.
 
 ## How to Run the Project Locally
 
@@ -37,8 +37,8 @@ Add your OpenAI API key:
 
 makefile
 
-OPENAI_API_KEY=your_openai_api_key
-
+NEXT_PUBLIC_OPENAI_API_KEY=your_openai_mock_api_key
+NEXT_PUBLIC_OPENAI_MOCK_API = your_openai_mock_api
 ##  Run the Development Server
 npm run dev
 
