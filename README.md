@@ -33,11 +33,12 @@ npm install
 ## Set Environment Variables
 Create a .env.local file in the project root.
 
-Add your OpenAI API key:
+Add your OpenAI mock API key:
 
 makefile
 
 NEXT_PUBLIC_OPENAI_API_KEY=your_openai_mock_api_key
+
 NEXT_PUBLIC_OPENAI_MOCK_API = your_openai_mock_api
 ##  Run the Development Server
 npm run dev
